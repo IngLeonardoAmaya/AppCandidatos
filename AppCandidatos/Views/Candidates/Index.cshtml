@@ -1,0 +1,63 @@
+﻿@model IEnumerable<AppCandidatos.Models.Candidate>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="offset-9 col-3 mb-3">
+        <a asp-action="Create" asp-controller="Candidates" class="btn btn-secondary d-block mx-auto btn-lg">
+            <i class="fa-solid fa-plus"></i> Nuevo Candidato
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 class="text-white"><strong>Lista de Candidatos</strong></h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    @if (Model.Count() > 0)
+                    {
+                        <table class="table table-bordered" id="tabla" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => m.IdCandidate)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Name)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Surname)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Birthdate)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Email)</th>
+                                    <th>Acciones</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.IdCandidate)</td>
+                                        <td>@Html.DisplayFor(m => item.Name)</td>
+                                        <td>@Html.DisplayFor(m => item.Surname)</td>
+                                        <td>@Html.DisplayFor(m => item.Birthdate)</td>
+                                        <td>@Html.DisplayFor(m => item.Email)</td>
+                                        <td>
+                                            <a class="btn btn-warning" asp-controller="Candidates" asp-action="Edit" asp-route-id="@item.IdCandidate"><i class="fa-solid fa-pen-to-square"></i> Editar</a>
+                                            <a class="btn btn-danger" asp-controller="Candidates" asp-action="Delete" asp-route-id="@item.IdCandidate"><i class="fa-solid fa-trash"></i> Eliminar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p>No hay registros</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
