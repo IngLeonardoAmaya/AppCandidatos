@@ -31,7 +31,7 @@ namespace AppCandidatos.Controllers
             {
                 CandidateExperiences = new List<CandidateExperienceViewModel> { new CandidateExperienceViewModel() }
             };
-            return View(viewModel); // Llama a la vista Create.cshtml
+            return View(viewModel);
         }
 
         // Crear candidato (POST)
@@ -69,7 +69,7 @@ namespace AppCandidatos.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            return View(viewModel); // Si hay errores, se recarga el formulario
+            return View(viewModel); 
         }
 
         // Editar candidato (GET)
@@ -103,7 +103,7 @@ namespace AppCandidatos.Controllers
                 }).ToList()
             };
 
-            return View(viewModel); // Llama a la vista Edit.cshtml
+            return View(viewModel); 
         }
 
         // Editar candidato (POST)
